@@ -6,16 +6,37 @@ from curses import wrapper
 
 class Game: pass
 
-class Klotz: pass
+class Klotz:
+    def __init__(self):
+        self.x = 0
+        self.y = 0
+    
+    def draw_Klotz(self):
+        l1 = '######'
+        l2 = '#    #'
+        l3 = '######'
+        lines = [l1, l2, l3]
+        return lines
+
 
 def main(stdscr):
+    # Bildschirm
     stdscr.clear()
     # screen_height, screen_width = stdscr.getmaxyx() // not used
-    x = 118 # screen_width (max 120)
-    y = 29 # screen_height (max 30)
+    x = 0 # Startpunkt
+    y = 0 # Startpunkt
+    screen_width = 118 # screen_width (max 120)
+    screen_height = 29 # screen_height (max 30)
+    # Klotz
+    klotz = Klotz()
+    klotz_draw = klotz.draw_Klotz()
+
     while True:
         stdscr.clear()
-        stdscr.addstr(y, x, 'X')
+        for i in range(len(klotz_draw)):
+            line = klotz_draw[i]
+            stdscr.addstr(y+i, x, line) # je Zeile des Klotzes wird ausgegeben
+        
         #stdscr.refresh()
         key = stdscr.getch()
         if key == ord('q'):
