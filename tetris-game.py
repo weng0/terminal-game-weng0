@@ -8,8 +8,19 @@ class Game: pass
 
 class Klotz:
     def __init__(self):
-        self.x = 0
-        self.y = 0
+        self.x_pos = 0
+        self.y_pos = 0
+
+    def getUnterseite(self):
+        y_pos_u = self.y_pos+2
+        return y_pos_u
+
+    def setPos(self, y, x):
+        self.y_pos = y
+        self.x_pos = x
+
+    def getPos(self):
+        return self.y_pos, self.x_pos
     
     def draw_Klotz(self):
         l1 = '######'
@@ -18,15 +29,37 @@ class Klotz:
         lines = [l1, l2, l3]
         return lines
     
-class Wand:
-    def __init__(self, screen_height, screen_width):
-        self.x_pos = 0
-        self.y_pos = screen_height
-        self.boden = "="*screen_width
+class Tetris_Rand:
+    def __init__(self, mul, y, x):
+        self.x_pos = x
+        self.y_pos = y
+        self.rand = "="*mul
     
-    def draw_Boden(self, stdscr_fn):
-        stdscr_fn(self.y_pos, self.x_pos, self.boden)
-        #return self.y_pos, self.x_pos, self.boden
+    def get_x(self):
+        return self.x_pos
+    
+    def get_y(self):
+        return self.y_pos
+    
+    def draw_Rand(self, stdscr_fn):
+        stdscr_fn(self.y_pos, self.x_pos, self.rand)
+
+class Boden(Tetris_Rand):
+    def __init__(self, mul, y, x):
+        super().__init__(mul, y, x)
+
+    # Kollidieren: Bitte ausbessern
+    def check_ifCollide_Boden(self, fn_obj_unten): # fn_obj2_pos = z.B. Wand
+        collide = False
+        #y_1 = fn_obj1_unten # hier unten // not used
+        #y_2 = fn_boden_pos             // not used
+        if fn_obj_unten+1 == self.y_pos:
+            collide = True
+        return collide
+
+class Wand(Tetris_Rand):
+    def __init__(self, mul, y, x):
+        super().__init__(mul, y, x)
 
 
 def main(stdscr):
@@ -40,27 +73,33 @@ def main(stdscr):
     # Klotz
     klotz = Klotz()
     klotz_draw = klotz.draw_Klotz()
-    wand = Wand(screen_height, screen_width)
+    boden = Boden(screen_width, screen_height, 0)
+    wand_L = Wand(screen_height, 0, 0)
+    wand_R = Wand(screen_height, 0, screen_width)
 
     while True:
         stdscr.clear()
         #stdscr.addstr(wand.draw_Boden())
-        wand.draw_Boden(stdscr.addstr)
+        boden.draw_Rand(stdscr.addstr)
+
         for i in range(len(klotz_draw)):
             line = klotz_draw[i]
             stdscr.addstr(y+i, x, line) # je Zeile des Klotzes wird ausgegeben
         
+        stdscr.addstr(10, 10, 'Kollidiert nicht')
+        stdscr.addstr(8, 10, str(klotz.getUnterseite()))
         #stdscr.refresh()
         key = stdscr.getch()
         if key == ord('q'):
             break
         if key == curses.KEY_UP and y > 0:
             y -= 1
-        if key == curses.KEY_DOWN and y < 29: y += 1
+
+        if boden.check_ifCollide_Boden(klotz.getUnterseite()) == False:
+            if key == curses.KEY_DOWN and y < 29:
+                y += 1
+
         if key == curses.KEY_RIGHT and x < 118: x += 1
         if key == curses.KEY_LEFT and x > 0: x -= 1
-
+        klotz.setPos(y,x)
 curses.wrapper(main)
-
-
-
