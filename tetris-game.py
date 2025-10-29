@@ -17,6 +17,16 @@ class Klotz:
         l3 = '######'
         lines = [l1, l2, l3]
         return lines
+    
+class Wand:
+    def __init__(self, screen_height, screen_width):
+        self.x_pos = 0
+        self.y_pos = screen_height
+        self.boden = "="*screen_width
+    
+    def draw_Boden(self, stdscr_fn):
+        stdscr_fn(self.y_pos, self.x_pos, self.boden)
+        #return self.y_pos, self.x_pos, self.boden
 
 
 def main(stdscr):
@@ -30,9 +40,12 @@ def main(stdscr):
     # Klotz
     klotz = Klotz()
     klotz_draw = klotz.draw_Klotz()
+    wand = Wand(screen_height, screen_width)
 
     while True:
         stdscr.clear()
+        #stdscr.addstr(wand.draw_Boden())
+        wand.draw_Boden(stdscr.addstr)
         for i in range(len(klotz_draw)):
             line = klotz_draw[i]
             stdscr.addstr(y+i, x, line) # je Zeile des Klotzes wird ausgegeben
