@@ -34,9 +34,7 @@ def main(stdscr):
 
         wand_R.draw_Rechts(stdscr.addstr, '|') # muss anpassen
 
-        for i in range(len(klotz_draw)):
-            line = klotz_draw[i]
-            stdscr.addstr(y+i, x, line) # je Zeile des Klotzes wird ausgegeben
+        klotz.draw(stdscr) # jede Zeile des Klotzes wird ausgegeben
         
         stdscr.addstr(10, 10, 'Kollidiert nicht')
         stdscr.addstr(8, 10, str(klotz.getUnterseite()))
