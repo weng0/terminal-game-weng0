@@ -4,6 +4,9 @@ os.system("echo \033[2J")
 import curses
 from curses import wrapper
 from src.klotz import Klotz
+from src.tetris_rand import Boden
+from src.tetris_rand import Wand
+
 class Game: pass
 
     
