@@ -21,7 +21,7 @@ def main(stdscr):
     screen_height = 29 # screen_height (max 30)
     # Klotz
     klotz = Klotz()
-    klotz_draw = klotz.draw_Klotz()
+    #klotz_draw = klotz.draw(stdscr)
     boden = Boden(screen_width, screen_height, 0)
     wand_L = Wand(screen_height, 0, 0)
     wand_R = Wand(screen_height, 0, 119)
