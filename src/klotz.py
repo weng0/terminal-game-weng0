@@ -1,9 +1,8 @@
 class Klotz:
     def __init__(self):
-        self.x_pos = 1
+        self.x_pos = 0
         self.y_pos = 0
-        self.rows = ['######', '#    #', '######']
-        
+        self.rows = ['######', '######', '######']
 
     def getUnterseite(self):
         return self.y_pos+2
@@ -34,6 +33,7 @@ class Cluster:
         self.klotz_cluster : Klotz = [Klotz(),Klotz(),Klotz(),Klotz()]
         self.y = 15
         self.x = 50
+        self.form = None
 
     def setForm(self):
         y = self.y
@@ -43,10 +43,22 @@ class Cluster:
             k = self.klotz_cluster[i]
             x, y = z[i]
             k.setDrawPosition(y,x)
+        self.form = z
 
     def drawCluster(self, stdscr_fn):
         for i in self.klotz_cluster:
             i.draw(stdscr_fn)
+
+    def get_Seite(self, richtung : str): # von allen Klötzen im Cluster // Richtung = z.B. 'R', 'L', 'U'
+        x_or_y_pos = []
+        for i in self.klotz_cluster:
+            if richtung == 'R':
+                x_or_y_pos.append(i.get_R_Seite())
+            if richtung == 'L':
+                x_or_y_pos.append(i.get_L_Seite())
+            if richtung == 'U':
+                x_or_y_pos.append(i.getUnterseite())
+        return x_or_y_pos
         
     def setPos(self, y, x):
         self.y = y
