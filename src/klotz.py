@@ -48,3 +48,6 @@ class Cluster:
         for i in self.klotz_cluster:
             i.draw(stdscr_fn)
         
+    def setPos(self, y, x):
+        self.y = y
+        self.x = x
