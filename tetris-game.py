@@ -26,6 +26,8 @@ def main(stdscr):
     boden = Boden(screen_width, screen_height, 0)
     wand_L = Wand(screen_height, 0, 0)
     wand_R = Wand(screen_height, 0, 119)
+    cluster = Cluster()
+    cluster.setForm()
 
     while True:
         stdscr.clear()
@@ -36,6 +38,7 @@ def main(stdscr):
         wand_R.draw_Rechts(stdscr.addstr, '|') # muss anpassen
 
         klotz.draw(stdscr) # jede Zeile des Klotzes wird ausgegeben
+        cluster.drawCluster(stdscr)
         
         stdscr.addstr(10, 10, 'Kollidiert nicht')
         stdscr.addstr(8, 10, str(klotz.getUnterseite()))
@@ -54,5 +57,5 @@ def main(stdscr):
 
         if wand_L.check_ifCollide_Wand(klotz.get_L_Seite()) == False:
             if key == curses.KEY_LEFT and x > 0: x -= 1
-        klotz.setPos(y,x)
+        klotz.setDrawPosition(y,x)
 curses.wrapper(main)
