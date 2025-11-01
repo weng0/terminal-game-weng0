@@ -47,6 +47,7 @@ def main(stdscr):
         # stdscr.addstr(8, 10, str(cluster.get_Seite('L')))
         #stdscr.refresh()
         # stdscr.addstr(9, 10, str(wand_R.get_x()))
+        bewegbare_cluster = cluster # Jeder neu erzeugte Cluster, der dem Variable 'bewegbare_cluster' zugewiesen bekommt, darf nur durch diese Zuweisung bewegt werden
 
         key = stdscr.getch()
         if key == ord('q'):
@@ -56,6 +57,8 @@ def main(stdscr):
 
         if boden.check_ifCollide_Boden(cluster.get_Seite('U')) == False:
             if key == curses.KEY_DOWN: y += 1
+        else: # Cluster haftet am Boden und kann nicht mehr bewegt werden, der Cluster wird von diesem Variable entfernt 
+            bewegbare_cluster = None
 
         if wand_R.check_ifCollide_Wand(cluster.get_Seite('R')) == False:
             if key == curses.KEY_RIGHT: x += 1
@@ -64,6 +67,7 @@ def main(stdscr):
         if wand_L.check_ifCollide_Wand(cluster.get_Seite('L')) == False:
             if key == curses.KEY_LEFT: x -= 1
 
-        cluster.setPos(y,x)
+        if bewegbare_cluster != None:
+            bewegbare_cluster.setPos(y,x)
         
 curses.wrapper(main)
