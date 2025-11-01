@@ -3,11 +3,11 @@ os.system("echo \033[1;1H")
 os.system("echo \033[2J")
 import curses
 from curses import wrapper
-from src.klotz import Klotz
-from src.klotz import Cluster
+# from src.klotz import Klotz
+from src.cluster import Cluster
 from src.tetris_rand import Boden
 from src.tetris_rand import Wand
-from src.klotz import Formen
+from src.cluster import Formen
 
 stdscr = curses.initscr()
 
@@ -23,7 +23,7 @@ def main(stdscr):
     screen_height = 29 # screen_height (max 30)
 
     # Klotz
-    klotz = Klotz()
+    #klotz = Klotz()
     
 
     boden = Boden(screen_width, screen_height, 0)
