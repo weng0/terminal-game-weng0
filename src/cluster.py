@@ -1,4 +1,4 @@
-from klotz import Klotz
+from src.klotz import Klotz
 import random
 random.seed()
 

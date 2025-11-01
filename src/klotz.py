@@ -24,5 +24,3 @@ class Klotz:
         for i in range(len(self.rows)):
             line = self.rows[i]
             stdscr_fn.addstr(self.y_pos+i, self.x_pos, line)
-
-'''Kommentar'''
