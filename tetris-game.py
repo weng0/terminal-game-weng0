@@ -7,18 +7,17 @@ from src.klotz import Klotz
 from src.klotz import Cluster
 from src.tetris_rand import Boden
 from src.tetris_rand import Wand
+from src.klotz import Formen
 
 stdscr = curses.initscr()
 
 class Game: pass
 
-    
-
 def main(stdscr):
     # Bildschirm
     stdscr.clear()
     # screen_height, screen_width = stdscr.getmaxyx() // not used
-    x = 0 # Startpunkt
+    x = 50 # Startpunkt
     y = 0 # Startpunkt
     screen_width = 119 # screen_width (max 120)
     screen_height = 29 # screen_height (max 30)
@@ -41,12 +40,13 @@ def main(stdscr):
         wand_R.draw_Rechts(stdscr.addstr, '|')
 
         # klotz.draw(stdscr) # jede Zeile des Klotzes wird ausgegeben
-
+        cluster.waehleForm(Formen.T)
         cluster.setForm()
         cluster.drawCluster(stdscr)
         
-        #stdscr.addstr(8, 10, str(cluster.get_Unterseite()))
+        # stdscr.addstr(8, 10, str(cluster.get_Seite('L')))
         #stdscr.refresh()
+        # stdscr.addstr(9, 10, str(wand_R.get_x()))
 
         key = stdscr.getch()
         if key == ord('q'):
@@ -59,6 +59,7 @@ def main(stdscr):
 
         if wand_R.check_ifCollide_Wand(cluster.get_Seite('R')) == False:
             if key == curses.KEY_RIGHT: x += 1
+        else: print('Kollide')
 
         if wand_L.check_ifCollide_Wand(cluster.get_Seite('L')) == False:
             if key == curses.KEY_LEFT: x -= 1
