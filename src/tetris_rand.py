@@ -22,7 +22,6 @@ class Boden(Tetris_Rand):
         collide = False
         for pos in pos_u_list:
             y, x = pos
-
             if y+1 == self.y_pos:
                 collide = True
         return collide
