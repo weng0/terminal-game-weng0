@@ -55,11 +55,15 @@ class Cluster:
                 x_or_y_pos.append(i.get_L_Seite())
             if richtung == 'U':
                 x_or_y_pos.append(i.getUnterseite())
+            if richtung == 'O':
+                x_or_y_pos.append(i.get_O_Seite())
         return x_or_y_pos
         
     def setPos(self, y, x):
         self.y = y
         self.x = x
+
+    def kollidiert_m_Cluster(self): pass
 
 '''
 T:

@@ -18,10 +18,12 @@ class Boden(Tetris_Rand):
     def __init__(self, mul, y, x):
         super().__init__(mul, y, x)
 
-    def check_ifCollide_Boden(self, y_pos_u : list):
+    def check_ifCollide_Boden(self, pos_u_list : list):
         collide = False
-        for i in y_pos_u:
-            if i+1 == self.y_pos:
+        for pos in pos_u_list:
+            y, x = pos
+
+            if y+1 == self.y_pos:
                 collide = True
         return collide
 
