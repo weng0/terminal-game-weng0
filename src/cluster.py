@@ -24,10 +24,10 @@ class Cluster:
             z = [(x,y),(x+3,y),(x+3,y+2), (x+(3)*2, y+2)]
             self.form = z
         if waehl_form == Formen.I:
-            i = [(x,y), (x,y+2), (x,(y+2)*2), (x,(y+2)*3)]
+            i = [(x,y), (x,y+2), (x,y+2*2), (x,y+2*3)]
             self.form = i
         if waehl_form == Formen.L:
-            l = [(x,y), (x,y+2), (x,(y+2)*2), (x+3,(y+2)*2)]
+            l = [(x,y), (x,y+2), (x,y+2*2), (x+3,y+2*2)]
             self.form = l
         if waehl_form == Formen.O:
             o = [(x,y), (x+3, y), (x,y+2), (x+3, y+2)]
@@ -69,13 +69,13 @@ T:
 I:
 (x,y)
 (x,y+2)
-(x,(y+2)*2)
-(x,(y+2)*3)
+(x,(y+2*2)
+(x,(y+2*3)
 
 L:
 (x,y)
 (x,y+2)
-(x,(y+2)*2)(x+3,(y+2)*2)
+(x,(y+2*2)(x+3,(y+2*2)
 
 O:
 (x,y)(x+3, y)
