@@ -8,6 +8,7 @@ from src.cluster import Cluster
 from src.tetris_rand import Boden
 from src.tetris_rand import Wand
 from src.cluster import Formen
+from src.cluster_fest import ClusterFest
 import random
 random.seed()
 stdscr = curses.initscr()
@@ -22,7 +23,8 @@ def main(stdscr):
     y = 0 # Startpunkt
     screen_width = 119 # screen_width (max 120)
     screen_height = 29 # screen_height (max 30)
-    unbewegbare_clusters : Cluster = []
+    
+    feste_clusters = ClusterFest() # unbewegbare_clusters : Cluster = []
     boden = Boden(screen_width, screen_height, 0)
     wand_L = Wand(screen_height, 0, 0)
     wand_R = Wand(screen_height, 0, 119)
@@ -41,10 +43,13 @@ def main(stdscr):
         cluster.setForm()
         cluster.drawCluster(stdscr)
 
-        for c in unbewegbare_clusters:
-            c.drawCluster(stdscr)
+        feste_clusters.draw(stdscr)
+        # for c in unbewegbare_clusters:
+        #     c.drawCluster(stdscr)
         
         bewegbarer_cluster = cluster # Jeder neu erzeugte Cluster, der dem Variable 'bewegbarer_cluster' zugewiesen bekommt, darf nur durch diese Zuweisung bewegt werden
+
+        # Kollidieren:
 
         key = stdscr.getch()
         if key == ord('q'):
@@ -53,10 +58,11 @@ def main(stdscr):
             y -= 1
 
         if boden.check_ifCollide_Boden(cluster.get_Seite('U')) == False:
-            if key == curses.KEY_DOWN: y += 1
+            if feste_clusters.kollidiert_m_Cluster(cluster.get_Seite('U')) == False: # NEU !!!
+                if key == curses.KEY_DOWN: y += 1
         else: # Cluster haftet am Boden und kann nicht mehr bewegt werden, der Cluster wird von diesem Variable entfernt 
             bewegbarer_cluster = None
-            unbewegbare_clusters.append(cluster)
+            #feste_clusters.unbewegbare_clusters.append(cluster) # !!!
             zufallsform = random.randint(1,5)
             x, y = 50, 0 # draw Koordinaten
             cluster = Cluster()
