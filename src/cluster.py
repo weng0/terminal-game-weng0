@@ -11,10 +11,10 @@ class Formen(enum.Enum):
     O = 5
 
 class Cluster:
-    def __init__(self):
+    def __init__(self, y, x):
         self.klotz_cluster : Klotz = [Klotz(),Klotz(),Klotz(),Klotz()]
-        self.y = 0
-        self.x = 50
+        self.y = y
+        self.x = x
         self.form = None
 
     def waehleForm(self, waehl_form : Formen):
@@ -54,11 +54,11 @@ class Cluster:
             if richtung == 'L':
                 x_or_y_pos.append(i.get_L_Seite())
             if richtung == 'U':
-                x_or_y_pos.append(i.getUnterseite())
+                x_or_y_pos.append(i.getUnterseite()) # das ist [(y,x), (y,x), ...]
             if richtung == 'O':
-                x_or_y_pos.append(i.get_O_Seite())
+                x_or_y_pos.append(i.get_O_Seite())  # das ist [(y,x), (y,x), ...]
         return x_or_y_pos
-        
+
     def setPos(self, y, x):
         self.y = y
         self.x = x
