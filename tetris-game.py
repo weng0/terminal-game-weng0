@@ -28,15 +28,14 @@ def main(stdscr):
     boden = Boden(screen_width, screen_height, 0)
     wand_L = Wand(screen_height, 0, 0)
     wand_R = Wand(screen_height, 0, 119)
-    cluster = Cluster()
-    zufallsform = Formen.L
+    cluster = Cluster(y, x)
+    zufallsform = Formen.T
 
     while True:
         stdscr.clear()
         
         boden.draw(stdscr.addstr, '=')
         wand_L.draw(stdscr.addstr, '|\n')
-
         wand_R.draw_Rechts(stdscr.addstr, '|')
 
         cluster.waehleForm(Formen(zufallsform))
@@ -44,37 +43,39 @@ def main(stdscr):
         cluster.drawCluster(stdscr)
 
         feste_clusters.draw(stdscr)
-        # for c in unbewegbare_clusters:
-        #     c.drawCluster(stdscr)
         
-        bewegbarer_cluster = cluster # Jeder neu erzeugte Cluster, der dem Variable 'bewegbarer_cluster' zugewiesen bekommt, darf nur durch diese Zuweisung bewegt werden
+        # Jeder neu erzeugte Cluster, der dem Variable 'bewegbarer_cluster' zugewiesen bekommt, darf nur durch diese Zuweisung bewegt werden
 
-        # Kollidieren:
+        #if feste_clusters.kollidiert_m_Cluster(cluster.get_Seite('U')) == False: # NEU !!!
+           #print('Funktion ausgeführt')
+        isBoden = boden.check_ifCollide_Boden(cluster.get_Seite('U'))
+        isCluster = feste_clusters.kollidiert_m_Cluster(cluster.get_Seite('U'))
 
+        # Wenn keine Tasten gedrückt werden, dann werden sämtliche Funktionen die nach key = stdscr.getch() kommen gar nicht ausgeführt
         key = stdscr.getch()
         if key == ord('q'):
             break
         if key == curses.KEY_UP and y > 0:
             y -= 1
-
-        if boden.check_ifCollide_Boden(cluster.get_Seite('U')) == False:
-            if feste_clusters.kollidiert_m_Cluster(cluster.get_Seite('U')) == False: # NEU !!!
-                if key == curses.KEY_DOWN: y += 1
-        else: # Cluster haftet am Boden und kann nicht mehr bewegt werden, der Cluster wird von diesem Variable entfernt 
-            bewegbarer_cluster = None
-            #feste_clusters.unbewegbare_clusters.append(cluster) # !!!
-            zufallsform = random.randint(1,5)
-            x, y = 50, 0 # draw Koordinaten
-            cluster = Cluster()
-            bewegbarer_cluster = cluster
+            cluster.setPos(y,x)
+        if key == curses.KEY_DOWN:
+            if isBoden == False and isCluster == False:
+                y += 1
+                cluster.setPos(y,x)
+            else: # Cluster haftet am Boden und kann nicht mehr bewegt werden, der Cluster wird von diesem Variable entfernt 
+                feste_clusters.unbewegbare_clusters.append(cluster) # !!!
+                zufallsform = random.randint(1,5)
+                x, y = 50, 0 # draw Koordinaten
+                cluster = Cluster(y,x)
 
         if wand_R.check_ifCollide_Wand(cluster.get_Seite('R')) == False:
-            if key == curses.KEY_RIGHT: x += 1
+            if key == curses.KEY_RIGHT:
+                x += 1
+                cluster.setPos(y,x)
 
         if wand_L.check_ifCollide_Wand(cluster.get_Seite('L')) == False:
-            if key == curses.KEY_LEFT: x -= 1
+            if key == curses.KEY_LEFT:
+                x -= 1
+                cluster.setPos(y,x)
 
-        if bewegbarer_cluster != None:
-            bewegbarer_cluster.setPos(y,x)
-        
 curses.wrapper(main)
