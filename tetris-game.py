@@ -19,9 +19,9 @@ def main(stdscr):
     # Bildschirm
     stdscr.clear()
     # screen_height, screen_width = stdscr.getmaxyx() // not used
-    x = 49 # Startpunkt
+    x = 39 # Startpunkt
     y = 0 # Startpunkt
-    screen_width = 100 # screen_width (max 120) original: 119
+    screen_width = 80 # screen_width (max 120) original: 119
     screen_height = 30 # screen_height (max 30)
     
     feste_clusters = ClusterFest() # unbewegbare_clusters : Cluster = []
@@ -46,7 +46,6 @@ def main(stdscr):
         
         # Jeder neu erzeugte Cluster, der dem Variable 'bewegbarer_cluster' zugewiesen bekommt, darf nur durch diese Zuweisung bewegt werden
 
-        
         isBoden = boden.check_ifCollide_Boden(cluster.get_Seite('U'))
         isFCluster = feste_clusters.kollidiert_oben(cluster.get_Seite('U'))
         isFCluster_R = feste_clusters.kollidiert_seitlich(cluster.get_Seite('L'), 'R')  # Wenn Cluster_R -> Fest_L / Fest_R <- Cluster_L
