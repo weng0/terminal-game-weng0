@@ -32,7 +32,6 @@ class ClusterFest:
 
                 if y_u+1 == y_o and x_u == x_o:
                     kollidiert = True
-                    print('Kollidiert')
         return kollidiert
     
     def kollidiert_seitlich(self, cluster_R_or_L : list, get_R_or_L : str): # Wenn Cluster_R -> Fest_L / Fest_R <- Cluster_L
@@ -50,8 +49,6 @@ class ClusterFest:
 
                 if cluster_y == y_fest and x_fest == cluster_x-1: # Fest_R <- Cluster_L
                     kollidiert = True
-                    print('Kollidiert')
                 if cluster_y == y_fest and cluster_x+1 == x_fest: # Cluster_R -> Fest_L
                     kollidiert = True
-                    print('Kollidiert')
         return kollidiert
