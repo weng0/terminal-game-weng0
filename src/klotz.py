@@ -5,7 +5,7 @@ class Klotz:
         self.rows = ['###','###']
 
     def getUnterseite(self):
-        return self.y_pos+1
+        return self.y_pos+1,self.x_pos
     
     def get_R_Seite(self):
         return self.x_pos+2
@@ -14,7 +14,7 @@ class Klotz:
         return self.x_pos
     
     def get_O_Seite(self):
-        return self.y_pos
+        return self.y_pos, self.x_pos
 
     def setDrawPosition(self, y, x):
         self.y_pos = y
