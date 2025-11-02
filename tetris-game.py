@@ -49,8 +49,10 @@ def main(stdscr):
         #if feste_clusters.kollidiert_m_Cluster(cluster.get_Seite('U')) == False: # NEU !!!
            #print('Funktion ausgeführt')
         isBoden = boden.check_ifCollide_Boden(cluster.get_Seite('U'))
-        isCluster = feste_clusters.kollidiert_m_Cluster(cluster.get_Seite('U'))
-
+        isFCluster = feste_clusters.kollidiert_oben(cluster.get_Seite('U'))
+        isFCluster_R = feste_clusters.kollidiert_seitlich(cluster.get_Seite('L'), 'R')  # Wenn Cluster_R -> Fest_L / Fest_R <- Cluster_L
+        isFCluster_L = feste_clusters.kollidiert_seitlich(cluster.get_Seite('R'), 'L')
+        kollidiert = False
         # Wenn keine Tasten gedrückt werden, dann werden sämtliche Funktionen die nach key = stdscr.getch() kommen gar nicht ausgeführt
         key = stdscr.getch()
         if key == ord('q'):
@@ -59,23 +61,29 @@ def main(stdscr):
             y -= 1
             cluster.setPos(y,x)
         if key == curses.KEY_DOWN:
-            if isBoden == False and isCluster == False:
+            if isBoden == False and isFCluster == False: # and isFCluster_L == False
                 y += 1
                 cluster.setPos(y,x)
             else: # Cluster haftet am Boden und kann nicht mehr bewegt werden, der Cluster wird von diesem Variable entfernt 
-                feste_clusters.unbewegbare_clusters.append(cluster) # !!!
-                zufallsform = random.randint(1,5)
-                x, y = 50, 0 # draw Koordinaten
-                cluster = Cluster(y,x)
+                kollidiert = True
 
+        
         if wand_R.check_ifCollide_Wand(cluster.get_Seite('R')) == False:
             if key == curses.KEY_RIGHT:
-                x += 1
-                cluster.setPos(y,x)
+                if isFCluster_L == False:
+                    x += 1
+                    cluster.setPos(y,x)
 
         if wand_L.check_ifCollide_Wand(cluster.get_Seite('L')) == False:
             if key == curses.KEY_LEFT:
-                x -= 1
-                cluster.setPos(y,x)
+                if isFCluster_R == False:
+                    x -= 1
+                    cluster.setPos(y,x)
+
+        if kollidiert == True:
+            feste_clusters.unbewegbare_clusters.append(cluster) # !!!
+            zufallsform = random.randint(1,5)
+            x, y = 50, 0 # draw Koordinaten
+            cluster = Cluster(y,x)
 
 curses.wrapper(main)
