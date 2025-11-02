@@ -32,10 +32,11 @@ class Wand(Tetris_Rand):
 
     def check_ifCollide_Wand(self, x_pos_r_or_l : list):
         collide = False
-        for i in x_pos_r_or_l:
-            if i+1 == self.x_pos:
+        for pos in x_pos_r_or_l:
+            y, x = pos
+            if x+1 == self.x_pos:
                 collide = True
-            if i-1 == self.x_pos:
+            if x-1 == self.x_pos:
                 collide = True
         return collide
     
