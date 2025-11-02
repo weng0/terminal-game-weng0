@@ -19,15 +19,15 @@ def main(stdscr):
     # Bildschirm
     stdscr.clear()
     # screen_height, screen_width = stdscr.getmaxyx() // not used
-    x = 50 # Startpunkt
+    x = 49 # Startpunkt
     y = 0 # Startpunkt
-    screen_width = 119 # screen_width (max 120)
-    screen_height = 29 # screen_height (max 30)
+    screen_width = 100 # screen_width (max 120) original: 119
+    screen_height = 30 # screen_height (max 30)
     
     feste_clusters = ClusterFest() # unbewegbare_clusters : Cluster = []
     boden = Boden(screen_width, screen_height, 0)
     wand_L = Wand(screen_height, 0, 0)
-    wand_R = Wand(screen_height, 0, 119)
+    wand_R = Wand(screen_height, 0, screen_width) # 119
     cluster = Cluster(y, x)
     zufallsform = Formen.T
 
@@ -46,38 +46,37 @@ def main(stdscr):
         
         # Jeder neu erzeugte Cluster, der dem Variable 'bewegbarer_cluster' zugewiesen bekommt, darf nur durch diese Zuweisung bewegt werden
 
-        #if feste_clusters.kollidiert_m_Cluster(cluster.get_Seite('U')) == False: # NEU !!!
-           #print('Funktion ausgeführt')
+        
         isBoden = boden.check_ifCollide_Boden(cluster.get_Seite('U'))
         isFCluster = feste_clusters.kollidiert_oben(cluster.get_Seite('U'))
         isFCluster_R = feste_clusters.kollidiert_seitlich(cluster.get_Seite('L'), 'R')  # Wenn Cluster_R -> Fest_L / Fest_R <- Cluster_L
         isFCluster_L = feste_clusters.kollidiert_seitlich(cluster.get_Seite('R'), 'L')
         kollidiert = False
-        # Wenn keine Tasten gedrückt werden, dann werden sämtliche Funktionen die nach key = stdscr.getch() kommen gar nicht ausgeführt
+        # Wenn keine Tasten gedrückt werden, dann werden sämtliche Funktionen, die nach key = stdscr.getch() kommen, gar nicht ausgeführt
         key = stdscr.getch()
         if key == ord('q'):
             break
+
         if key == curses.KEY_UP and y > 0:
             y -= 1
             cluster.setPos(y,x)
         if key == curses.KEY_DOWN:
             if isBoden == False and isFCluster == False: # and isFCluster_L == False
-                y += 1
+                y += 2
                 cluster.setPos(y,x)
             else: # Cluster haftet am Boden und kann nicht mehr bewegt werden, der Cluster wird von diesem Variable entfernt 
                 kollidiert = True
-
         
         if wand_R.check_ifCollide_Wand(cluster.get_Seite('R')) == False:
             if key == curses.KEY_RIGHT:
                 if isFCluster_L == False:
-                    x += 1
+                    x += 3
                     cluster.setPos(y,x)
 
         if wand_L.check_ifCollide_Wand(cluster.get_Seite('L')) == False:
             if key == curses.KEY_LEFT:
                 if isFCluster_R == False:
-                    x -= 1
+                    x -= 3
                     cluster.setPos(y,x)
 
         if kollidiert == True:
