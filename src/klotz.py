@@ -8,10 +8,10 @@ class Klotz:
         return self.y_pos+1,self.x_pos
     
     def get_R_Seite(self):
-        return self.x_pos+2
+        return self.y_pos, self.x_pos+2
     
     def get_L_Seite(self):
-        return self.x_pos
+        return self.y_pos, self.x_pos
     
     def get_O_Seite(self):
         return self.y_pos, self.x_pos
