@@ -12,10 +12,13 @@ class Formen(enum.Enum):
 
 class Cluster:
     def __init__(self, y, x):
-        self.klotz_cluster : Klotz = [Klotz(),Klotz(),Klotz(),Klotz()]
+        self.klotz_cluster = [Klotz(),Klotz(),Klotz(),Klotz()]
         self.y = y
         self.x = x
         self.form = None
+
+    def get_Kloetze(self):
+        return self.klotz_cluster
 
     def waehleForm(self, waehl_form : Formen):
         y = self.y
