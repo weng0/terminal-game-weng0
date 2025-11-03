@@ -9,6 +9,7 @@ from src.tetris_rand import Boden
 from src.tetris_rand import Wand
 from src.cluster import Formen
 from src.cluster_fest import ClusterFest
+from src.game_interface import Game_Interface
 import random
 random.seed()
 stdscr = curses.initscr()
@@ -17,12 +18,12 @@ class TetrisGame:
     def __init__(self):
         self.x_start = 37 # Startpunkt
         self.y_start = 0 # Startpunkt
-        self.screen_width = 80 # screen_width (max 120) original: 119
+        self.screen_width = 82 # screen_width (max 120) original: 119
         self.screen_height = 30 # screen_height (max 30)
         self.boden = Boden(self.screen_width, self.screen_height, 0)
         self.wand_L = Wand(self.screen_height, 0, 0)
         self.wand_R = Wand(self.screen_height, 0, self.screen_width) # 119
-        self.feste_clusters = ClusterFest()
+        self.feste_clusters = ClusterFest(self.screen_height, self.screen_width)
         self.cluster = Cluster(self.y_start, self.x_start)
         self.zufallsform = Formen.T
 
@@ -84,6 +85,12 @@ class TetrisGame:
                 self.zufallsform = random.randint(1,5)
                 y, x = self.y_start, self.x_start # draw Koordinaten
                 self.cluster = Cluster(y, x)
+                self.feste_clusters.kloetze_neu_anordnen()
+                self.feste_clusters.delete()
+
+            #self.feste_clusters.loesche_Zeile()
+            #self.feste_clusters.screen_koordinatensystem()
+            
 
 game = TetrisGame()
 curses.wrapper(game.main)
