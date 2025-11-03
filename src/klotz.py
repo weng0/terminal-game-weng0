@@ -4,6 +4,18 @@ class Klotz:
         self.y_pos = 0
         self.rows = ['###','###']
 
+    def getZeilenlaenge(self):
+        return 3
+
+    def set_y(self, neue_y):
+        self.y_pos = neue_y
+
+    def get_x(self):
+        return self.x_pos
+    
+    def get_y(self):
+        return self.y_pos
+
     def getUnterseite(self):
         return self.y_pos+1,self.x_pos
     
