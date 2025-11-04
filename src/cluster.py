@@ -19,8 +19,11 @@ class Cluster:
 
     def get_Kloetze(self):
         return self.klotz_cluster
+    
+    def set_Cluster(self, kloetz_liste):
+        self.klotz_cluster = kloetz_liste
 
-    def waehleForm(self, waehl_form : Formen):
+    def waehleForm(self, waehl_form : Formen, isRotiert):
         y = self.y
         x = self.x
         if waehl_form == Formen.Z:
@@ -38,12 +41,14 @@ class Cluster:
         if waehl_form == Formen.T:
             t = [(x,y), (x-3,y+2), (x,y+2), (x+3, y+2)]
             self.form = t
+        if isRotiert == True:
+            self.rotieren(waehl_form)
 
     def setForm(self):
         for i in range(len(self.klotz_cluster)):
             k = self.klotz_cluster[i]
             x, y = self.form[i] # !!!
-            k.setDrawPosition(y,x)
+            k.setPosition(y,x)
 
     def drawCluster(self, stdscr_fn):
         for i in self.klotz_cluster:
@@ -67,6 +72,26 @@ class Cluster:
         self.x = x
 
     def kollidiert_m_Cluster(self): pass
+
+    def rotieren(self, waehl_form : Formen):
+        y = self.y
+        x = self.x
+        if waehl_form == Formen.T:
+            t2 = [(x,y), (x-3+(2*3),y+2), (x+(1*3),y+2-(1*2)), (x+3, y+2-(2*2))]
+            self.form = t2
+
+        if waehl_form == Formen.I:
+            i2 = [(x,y), (x+(1*3),y+2-(1*2)), (x+(2*3),y+2*2-(2*2)), (x+(3*3),y+2*3-(3*2))]
+            self.form = i2
+
+        if waehl_form == Formen.Z:
+            z2 = [(x,y),(x+3-(1*3),y-(1*2)),(x+3,y+2-(2*2)), (x+3*2-(1*3), y+2-(2*3))]
+            self.form = z2
+
+        if waehl_form == Formen.L:
+            l2 = [(x,y), (x,y+2-(2*2)), (x,y+2*2-(4*2)), (x+3-(3*2),y+2*2-(4*2))]
+            self.form = l2
+        
 
 '''
 T:
