@@ -17,8 +17,8 @@ stdscr = curses.initscr()
 class TetrisGame:
     def __init__(self):
         self.x_start = 37 # Startpunkt
-        self.y_start = 0 # Startpunkt
-        self.screen_width = 82 # screen_width (max 120) original: 119
+        self.y_start = 6 # Startpunkt statt 0
+        self.screen_width = 52 # screen_width (max 120) original: 119
         self.screen_height = 30 # screen_height (max 30)
         self.boden = Boden(self.screen_width, self.screen_height, 0)
         self.wand_L = Wand(self.screen_height, 0, 0)
@@ -26,46 +26,57 @@ class TetrisGame:
         self.feste_clusters = ClusterFest(self.screen_height, self.screen_width)
         self.cluster = Cluster(self.y_start, self.x_start)
         self.zufallsform = Formen.T
+        self.interface = Game_Interface()
 
     def main(self,stdscr):
         # Bildschirm
         stdscr.clear()
         # screen_height, screen_width = stdscr.getmaxyx() // not used
         y, x = self.y_start, self.x_start
+        isRotated = False
+        rotation_count = 0
+        self.feste_clusters.koordinatensystem()
         while True:
             stdscr.clear()
             
             self.boden.draw(stdscr.addstr, '=')
             self.wand_L.draw(stdscr.addstr, '|\n')
             self.wand_R.draw_Rechts(stdscr.addstr, '|')
+            self.interface.print_Interface(stdscr)
 
-            self.cluster.waehleForm(Formen(self.zufallsform))
+            self.cluster.waehleForm(Formen(self.zufallsform), isRotated)
             self.cluster.setForm()
             self.cluster.drawCluster(stdscr)
-            # stdscr.addstr(0, 40, 'X')
 
             self.feste_clusters.draw(stdscr)
-            
-            # Jeder neu erzeugte Cluster, der dem Variable 'bewegbarer_cluster' zugewiesen bekommt, darf nur durch diese Zuweisung bewegt werden
 
             isBoden = self.boden.check_ifCollide_Boden(self.cluster.get_Seite('U'))
             isFCluster = self.feste_clusters.kollidiert_oben(self.cluster.get_Seite('U'))
             isFCluster_R = self.feste_clusters.kollidiert_seitlich(self.cluster.get_Seite('L'), 'R')  # Wenn Cluster_R -> Fest_L / Fest_R <- Cluster_L
             isFCluster_L = self.feste_clusters.kollidiert_seitlich(self.cluster.get_Seite('R'), 'L')
             kollidiert = False
+            
             # Wenn keine Tasten gedrückt werden, dann werden sämtliche Funktionen, die nach key = stdscr.getch() kommen, gar nicht ausgeführt
             key = stdscr.getch()
             if key == ord('q'):
                 break
 
+            if key == ord('r'):
+                rotation_count += 1
+                if rotation_count % 2 == 0:
+                    isRotated = False
+                else:
+                    isRotated = True
+                    self.cluster.setForm()
+
             if key == curses.KEY_UP and y > 0:
-                y -= 1
+                y -= 2
                 self.cluster.setPos(y,x)
             if key == curses.KEY_DOWN:
                 if isBoden == False and isFCluster == False: # and isFCluster_L == False
                     y += 2
                     self.cluster.setPos(y,x)
-                else: # Cluster haftet am Boden und kann nicht mehr bewegt werden, der Cluster wird von diesem Variable entfernt 
+                else: # Cluster haftet am Boden und kann nicht mehr bewegt werden, der Cluster wird dann von dieser Variable entfernt 
                     kollidiert = True
             
             if self.wand_R.check_ifCollide_Wand(self.cluster.get_Seite('R')) == False:
@@ -85,12 +96,11 @@ class TetrisGame:
                 self.zufallsform = random.randint(1,5)
                 y, x = self.y_start, self.x_start # draw Koordinaten
                 self.cluster = Cluster(y, x)
-                self.feste_clusters.kloetze_neu_anordnen()
-                self.feste_clusters.delete()
-
-            #self.feste_clusters.loesche_Zeile()
-            #self.feste_clusters.screen_koordinatensystem()
+                
+                if len(self.feste_clusters.unbewegbare_clusters) > 0 :
+                    self.feste_clusters.anordnung()
+                    self.feste_clusters.zeile_Loeschen(self.boden)
+                    self.interface.update_Punktzahl(self.feste_clusters)
             
-
 game = TetrisGame()
 curses.wrapper(game.main)
