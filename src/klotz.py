@@ -28,7 +28,7 @@ class Klotz:
     def get_O_Seite(self):
         return self.y_pos, self.x_pos
 
-    def setDrawPosition(self, y, x):
+    def setPosition(self, y, x):
         self.y_pos = y
         self.x_pos = x
 
