@@ -91,7 +91,7 @@ class Cluster:
         if waehl_form == Formen.L:
             l2 = [(x,y), (x,y+2-(2*2)), (x,y+2*2-(4*2)), (x+3-(3*2),y+2*2-(4*2))]
             self.form = l2
-        
+
 
 '''
 T:
