@@ -1,3 +1,5 @@
+from src.cluster_fest import ClusterFest
+
 class Game_Interface:
     def __init__(self):
         self.punktzahl = 0
@@ -12,7 +14,8 @@ class Game_Interface:
         # return self.spieler_name
 
 
-    def update_Punktzahl(self, punkte):
-        self.punktzahl = punkte
+    def update_Punktzahl(self, cluster_f : ClusterFest):
+        self.punktzahl = cluster_f.get_kompleteReihen()
 
-    def print_Interface(self): pass
+    def print_Interface(self, stdscr_fn):
+        stdscr_fn.addstr(10, 55, f"Punktzahl: {self.punktzahl}")
