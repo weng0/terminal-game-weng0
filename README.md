@@ -35,7 +35,9 @@ py ./tetris-game.py
 
 ### Spielregeln
 
-Bei Tetris geht es darum, unterschiedlich geformte Blöcke nacheinander auf das Spielfeld fallen zu lassen.
+Bei Tetris geht es darum, unterschiedlich geformte Blöcke
+![image alt](https://github.com/weng0/tetris-game-weng0/blob/main/bilder/formen.JPG)
+nacheinander auf das Spielfeld fallen zu lassen.
 Ziel ist es, zu verhindern, dass sich die Blöcke bis zum oberen Rand des Spielfelds auftürmen.
 Dies gelingt, indem man die Blöcke nach links oder rechts bewegt, um passende Lücken zu füllen.
 
@@ -50,4 +52,7 @@ Wenn durch das Platzieren eines Blocks eine Reihe vollständig gefüllt ist, wir
 Passt ein Block nicht in die Lücke, kann man ihn rotieren, bis er die richtige Form hat.
 Zum Rotieren verwende die Taste R.
 
-(Bild Rotation)
+![image alt](https://github.com/weng0/tetris-game-weng0/blob/main/bilder/rotation_I.JPG)
+![image alt](https://github.com/weng0/tetris-game-weng0/blob/main/bilder/rotation_L.JPG)
+![image alt](https://github.com/weng0/tetris-game-weng0/blob/main/bilder/rotation_T.JPG)
+![image alt](https://github.com/weng0/tetris-game-weng0/blob/main/bilder/rotation_Z.JPG)
