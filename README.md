@@ -6,9 +6,12 @@ Das Klonen dieses Repository mit dem Befehl 'git clone' und der Web-URL funktion
 
 Suche zunächst einen passenden Speicherort für das Repository und erstelle dort einen neuen Ordner.
 Anschließend wechsle über die Konsole, wie etwa die Windows-Eingabeaufforderung (CMD) oder Bash, mit dem Befehl 'cd' in das gewünschte Verzeichnis.
-![image alt](https://github.com/weng0/tetris-game-weng0/blob/main/bilder/neue_Ordner.JPG)
+![image alt](https://github.com/weng0/tetris-game-weng0/blob/main/bilder/neue_Ordner.JPG| width=100)
+
+
 Für Windows-Nutzern könnte das per CMD so aussehen:
-![image alt](https://github.com/weng0/tetris-game-weng0/blob/main/bilder/cmd_ordner_gewechselt.JPG)
+![image alt](https://github.com/weng0/tetris-game-weng0/blob/main/bilder/cmd_ordner_gewechselt.JPG| width=100)
+
 
 Klone das Repository, indem du das eingibst:
 ```bash
@@ -31,12 +34,18 @@ Um das Spiel zu starten, wechsle in den Ordner tetris-game-weng0 und vergrößer
 ```bash
 py ./tetris-game.py
 ```
-![image alt](https://github.com/weng0/tetris-game-weng0/blob/main/bilder/spiel_beginn.JPG)
+![image alt](https://github.com/weng0/tetris-game-weng0/blob/main/bilder/spiel_beginn.JPG| width=100)
+
+
 
 ### Spielregeln
 
 Bei Tetris geht es darum, unterschiedlich geformte Blöcke
-![image alt](https://github.com/weng0/tetris-game-weng0/blob/main/bilder/formen.JPG)
+![image alt](https://github.com/weng0/tetris-game-weng0/blob/main/bilder/formen.JPG| width=100)
+
+
+
+
 nacheinander auf das Spielfeld fallen zu lassen.
 Ziel ist es, zu verhindern, dass sich die Blöcke bis zum oberen Rand des Spielfelds auftürmen.
 Dies gelingt, indem man die Blöcke nach links oder rechts bewegt, um passende Lücken zu füllen.
