@@ -12,7 +12,7 @@ Für Windows-Nutzern könnte das per CMD so aussehen:
 
 Klone das Repository, indem du das eingibst:
 ```bash
-![image alt](git clone https://github.com/weng0/tetris-game-weng0.git)
+git clone https://github.com/weng0/tetris-game-weng0.git
 ```
 https://github.com/weng0/tetris-game-weng0/blob/main/bilder/cmd_geklont.JPG
 
