@@ -1,8 +1,8 @@
 # Tetris Game
-Tetris-game ist ein Spiel, den man auf der Konsole eines Computers ausführen kann.
+Tetris-game ist ein Spiel, das man auf der Konsole eines Computers ausführen kann.
 
 ## Installation
-Das Klonen dieser Repository mit dem Befehl 'git clone' und der Web-URL funktioniert sowohl unter Windows als auch unter Linux.
+Das Klonen dieses Repository mit dem Befehl 'git clone' und der Web-URL funktioniert sowohl unter Windows als auch unter Linux.
 
 Suche zunächst einen passenden Speicherort für das Repository und erstelle dort einen neuen Ordner.
 Anschließend wechsle über die Konsole, wie etwa die Windows-Eingabeaufforderung (CMD) oder Bash, mit dem Befehl 'cd' in das gewünschte Verzeichnis.
