@@ -25,4 +25,28 @@ pip install windows-curses
 
 
 ## Usage
+Um das Spiel zu starten, wechsle in den Ordner tetris-game-weng0 und vergrößere das Konsolenfenster.
+```bash
+py ./tetris-game.py
+```
 
+(Bild)
+
+### Spielregeln
+
+Bei Tetris geht es darum, unterschiedlich geformte Blöcke nacheinander auf das Spielfeld fallen zu lassen.
+Ziel ist es, zu verhindern, dass sich die Blöcke bis zum oberen Rand des Spielfelds auftürmen.
+Dies gelingt, indem man die Blöcke nach links oder rechts bewegt, um passende Lücken zu füllen.
+
+(Bild Steuerung Taste L u R)
+
+Sobald man eine passende Lücke gefunden hat, kann man den Block mit der Pfeiltaste nach unten schneller fallen lassen.
+
+(Bild Down-Taste)
+
+Wenn durch das Platzieren eines Blocks eine Reihe vollständig gefüllt ist, wird diese aufgelöst und man erhält einen Punkt.
+
+Passt ein Block nicht in die Lücke, kann man ihn rotieren, bis er die richtige Form hat.
+Zum Rotieren verwende die Taste R.
+
+(Bild Rotation)
