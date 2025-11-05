@@ -6,11 +6,11 @@ Das Klonen dieses Repository mit dem Befehl 'git clone' und der Web-URL funktion
 
 Suche zunächst einen passenden Speicherort für das Repository und erstelle dort einen neuen Ordner.
 Anschließend wechsle über die Konsole, wie etwa die Windows-Eingabeaufforderung (CMD) oder Bash, mit dem Befehl 'cd' in das gewünschte Verzeichnis.
-![image alt](https://github.com/weng0/tetris-game-weng0/blob/main/bilder/neue_Ordner.JPG| width=100)
+![image alt|100](https://github.com/weng0/tetris-game-weng0/blob/main/bilder/neue_Ordner.JPG)
 
 
 Für Windows-Nutzern könnte das per CMD so aussehen:
-![image alt](https://github.com/weng0/tetris-game-weng0/blob/main/bilder/cmd_ordner_gewechselt.JPG| width=100)
+![image alt](https://github.com/weng0/tetris-game-weng0/blob/main/bilder/cmd_ordner_gewechselt.JPG)
 
 
 Klone das Repository, indem du das eingibst:
@@ -34,14 +34,14 @@ Um das Spiel zu starten, wechsle in den Ordner tetris-game-weng0 und vergrößer
 ```bash
 py ./tetris-game.py
 ```
-![image alt](https://github.com/weng0/tetris-game-weng0/blob/main/bilder/spiel_beginn.JPG| width=100)
+![image alt](https://github.com/weng0/tetris-game-weng0/blob/main/bilder/spiel_beginn.JPG)
 
 
 
 ### Spielregeln
 
 Bei Tetris geht es darum, unterschiedlich geformte Blöcke
-![image alt](https://github.com/weng0/tetris-game-weng0/blob/main/bilder/formen.JPG| width=100)
+![image alt](https://github.com/weng0/tetris-game-weng0/blob/main/bilder/formen.JPG)
 
 
 
