@@ -6,14 +6,16 @@ Das Klonen dieses Repository mit dem Befehl 'git clone' und der Web-URL funktion
 
 Suche zunächst einen passenden Speicherort für das Repository und erstelle dort einen neuen Ordner.
 Anschließend wechsle über die Konsole, wie etwa die Windows-Eingabeaufforderung (CMD) oder Bash, mit dem Befehl 'cd' in das gewünschte Verzeichnis.
-
+![image alt](https://github.com/weng0/tetris-game-weng0/blob/main/bilder/neue_Ordner.JPG)
 Für Windows-Nutzern könnte das per CMD so aussehen:
-'bilder'
+![image alt](https://github.com/weng0/tetris-game-weng0/blob/main/bilder/cmd_ordner_gewechselt.JPG)
 
 Klone das Repository, indem du das eingibst:
 ```bash
-git clone https://github.com/weng0/tetris-game-weng0.git
+![image alt](git clone https://github.com/weng0/tetris-game-weng0.git)
 ```
+https://github.com/weng0/tetris-game-weng0/blob/main/bilder/cmd_geklont.JPG
+
 ### Fehlende Curses-Modul nachinstallieren
 Das Tetris Spiel funktioniert erst, wenn das entsprechende Modul installiert ist. Insbesondere Windows-Nutzern müssen diesen Schritt ausführen. Gib dazu in der CMD folgenden Befehl ein:
 ```bash
@@ -29,8 +31,7 @@ Um das Spiel zu starten, wechsle in den Ordner tetris-game-weng0 und vergrößer
 ```bash
 py ./tetris-game.py
 ```
-
-(Bild)
+![image alt](https://github.com/weng0/tetris-game-weng0/blob/main/bilder/spiel_beginn.JPG)
 
 ### Spielregeln
 
