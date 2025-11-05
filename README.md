@@ -32,7 +32,7 @@ pip install windows-curses
 ...
 
 
-## Usage
+## Spiel starten
 Um das Spiel zu starten, wechsle in den Ordner tetris-game-weng0 und vergrößere das Konsolenfenster.
 ```bash
 py ./tetris-game.py
