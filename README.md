@@ -58,10 +58,10 @@ Sobald man eine passende Lücke gefunden hat, kann man den Block mit der Pfeilta
 Wenn durch das Platzieren eines Blocks eine Reihe vollständig gefüllt ist, wird diese aufgelöst und man erhält einen Punkt.
 Passt ein Block nicht in die Lücke, kann man ihn rotieren, bis er die richtige Form hat. Zum Rotieren verwende die Taste R.
 
-<img src="" height=50%>
+<img src="https://github.com/weng0/tetris-game-weng0/blob/main/bilder/rotationen.JPG" width=40%>
 
 
-Will man das Spiel verlassen, so drückt man Taste 'q'.
+Will man das Spiel verlassen, so drückt man die Taste 'q'.
 
 ## Kommende Updates
 - Einbezug von Gameover, wenn die Blöcke über dem Spielrand hinausragen
