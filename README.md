@@ -7,14 +7,11 @@ Das Klonen dieses Repository mit dem Befehl 'git clone' und der Web-URL funktion
 Suche zunächst einen passenden Speicherort für das Repository und erstelle dort einen neuen Ordner.
 Anschließend wechsle über die Konsole, wie etwa die Windows-Eingabeaufforderung (CMD) oder Bash, mit dem Befehl 'cd' in das gewünschte Verzeichnis.
 
-<img src="https://github.com/weng0/tetris-game-weng0/blob/main/bilder/neue_Ordner.JPG" width=50% height=50%>
-
-
+<img src="https://github.com/weng0/tetris-game-weng0/blob/main/bilder/neue_Ordner.JPG" width=30%>
 
 Für Windows-Nutzern könnte das per CMD so aussehen:
-<img src="https://github.com/weng0/tetris-game-weng0/blob/main/bilder/cmd_ordner_gewechselt.JPG" width=50% height=50%>
 
-
+<img src="https://github.com/weng0/tetris-game-weng0/blob/main/bilder/cmd_ordner_gewechselt.JPG" width=40%>
 
 Klone das Repository, indem du das eingibst:
 ```bash
@@ -29,11 +26,7 @@ pip install windows-curses
 
 ### Issues
 Erscheint beim Ausführen des Tetris Spiels diese Fehlermeldung, so muss man den Konsolfenster maximieren:
-<img src="https://github.com/weng0/tetris-game-weng0/blob/main/bilder/cmd_fenster_vergroe%C3%9Fern.JPG" width=50% height=50%>
-
-
-
-
+<img src="https://github.com/weng0/tetris-game-weng0/blob/main/bilder/cmd_fenster_vergroe%C3%9Fern.JPG" width=60%>
 
 
 ## Spiel starten
@@ -41,38 +34,31 @@ Um das Spiel zu starten, wechsle in den Ordner tetris-game-weng0 und führe dies
 ```bash
 py ./tetris-game.py
 ```
-<img src="https://github.com/weng0/tetris-game-weng0/blob/main/bilder/spiel_beginn.JPG" width=70% height=70%>
-
-
+<img src="https://github.com/weng0/tetris-game-weng0/blob/main/bilder/spiel_beginn.JPG" width=30%>
 
 ### Spielregeln
 
 Bei Tetris geht es darum, unterschiedlich geformte Blöcke
-<img src="https://github.com/weng0/tetris-game-weng0/blob/main/bilder/formen.JPG" width=50% height=50%>
 
-
-
+<img src="https://github.com/weng0/tetris-game-weng0/blob/main/bilder/formen.JPG" width=40%>
 
 nacheinander auf das Spielfeld fallen zu lassen.
 Ziel ist es, zu verhindern, dass sich die Blöcke bis zum oberen Rand des Spielfelds auftürmen.
 Dies gelingt, indem man die Blöcke nach links oder rechts bewegt, um passende Lücken zu füllen.
 
-<img src="https://github.com/weng0/tetris-game-weng0/blob/main/bilder/L_R_pfeiltaste.JPG" width=50% height=50%>
+<img src="https://github.com/weng0/tetris-game-weng0/blob/main/bilder/L_R_pfeiltaste.JPG" width=15%>
 
 
 Sobald man eine passende Lücke gefunden hat, kann man den Block mit der Pfeiltaste nach unten schneller fallen lassen.
 
-<img src="https://github.com/weng0/tetris-game-weng0/blob/main/bilder/U_pfeiltaste.JPG" width=50% height=50%>
+<img src="https://github.com/weng0/tetris-game-weng0/blob/main/bilder/U_pfeiltaste.JPG" width=15%>
 
 
 
 Wenn durch das Platzieren eines Blocks eine Reihe vollständig gefüllt ist, wird diese aufgelöst und man erhält einen Punkt.
 Passt ein Block nicht in die Lücke, kann man ihn rotieren, bis er die richtige Form hat. Zum Rotieren verwende die Taste R.
 
-<img src="https://github.com/weng0/tetris-game-weng0/blob/main/bilder/rotation_I.JPG" width=50% height=50%>
-<img src="https://github.com/weng0/tetris-game-weng0/blob/main/bilder/rotation_L.JPG" width=50% height=50%>
-<img src="https://github.com/weng0/tetris-game-weng0/blob/main/bilder/rotation_T.JPG" width=50% height=50%>
-<img src="https://github.com/weng0/tetris-game-weng0/blob/main/bilder/rotation_Z.JPG" width=50% height=50%>
+<img src="" height=50%>
 
 
 Will man das Spiel verlassen, so drückt man Taste 'q'.
@@ -81,5 +67,3 @@ Will man das Spiel verlassen, so drückt man Taste 'q'.
 - Einbezug von Gameover, wenn die Blöcke über dem Spielrand hinausragen
 - 90° Rotationen bei einigen Blöcken möglich machen
 - Beheben von Fehlern
-
-<img src=" " width=50% height=50%>
